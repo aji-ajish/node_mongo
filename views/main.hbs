@@ -18,6 +18,31 @@
 <body>
     <h1>Mongodb CRUD Example</h1>
     {{message}}
+    {{#if edit_id }}
+    <table>
+        <form action="/update_book/{{edit_id }}" method="post">
+            <tr>
+                <th colspan="2">
+                    <h3>Edit Data</h3>
+                </th>
+            </tr>
+            <tr>
+                <th><label for="title">Title</label></th>
+                <th><label for="author">Author</label></th>
+            </tr>
+            <tr>
+                <td><input type="text" name="title" id="title" value="{{edit_book.title }}"></td>
+                <td> <input type="text" name="author" id="author" value="{{edit_book.author }}"></td>
+            </tr>
+            <tr>
+                <td colspan="2" >
+                    <button type="submit">Submit</button>
+                </td>
+            </tr>
+
+        </form>
+    </table>
+    {{else }}
     <table>
         <form action="/store_book" method="post">
             <tr>
@@ -41,16 +66,23 @@
 
         </form>
     </table>
+    {{/if }}
+    <br>
+
     <br>
     <table>
         <tr>
             <th>Title</th>
             <th>Author</th>
+            <th>Action</th>
         </tr>
-        {{#each employee}}
+        {{#each book}}
         <tr>
             <td>{{this.title }}</td>
             <td>{{this.author}}</td>
+            <td><a href="?edit_id={{this._id }}">Edit</a> <br>
+            <a href="?delete_id={{this._id }}" onclick="return confirm('Are you sure want to delete')">Delete</a>
+            </td>
         </tr>
         {{/each }}
     </table>
