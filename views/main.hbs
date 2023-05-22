@@ -1,18 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mongodb CRUD Example</title>
+    <style>
+        th,
+        td {
+            border: 1px solid black;
+            padding: 10px;
+        }
+    </style>
 </head>
+
 <body>
     <h1>Mongodb CRUD Example</h1>
     {{message}}
-    <ul>
+    <table>
+        <form action="/store_book" method="post">
+            <tr>
+                <th colspan="2">
+                    <h3>Create Data</h3>
+                </th>
+            </tr>
+            <tr>
+                <th><label for="title">Title</label></th>
+                <th><label for="author">Author</label></th>
+            </tr>
+            <tr>
+                <td><input type="text" name="title" id="title"></td>
+                <td> <input type="text" name="author" id="author"></td>
+            </tr>
+            <tr>
+                <td colspan="2" >
+                    <button type="submit">Submit</button>
+                </td>
+            </tr>
+
+        </form>
+    </table>
+    <br>
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+        </tr>
         {{#each employee}}
-        <li>{{this.title }}-{{this.author}} </li>
+        <tr>
+            <td>{{this.title }}</td>
+            <td>{{this.author}}</td>
+        </tr>
         {{/each }}
-    </ul>
+    </table>
+
 </body>
+
 </html>
