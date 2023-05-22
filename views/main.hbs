@@ -9,5 +9,10 @@
 <body>
     <h1>Mongodb CRUD Example</h1>
     {{message}}
+    <ul>
+        {{#each employee}}
+        <li>{{this.title }}-{{this.author}} </li>
+        {{/each }}
+    </ul>
 </body>
 </html>
